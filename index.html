@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,69 +8,102 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <title>Document</title>
     <style>
-    body {  
-  /* background: #1D1F20; */
-  padding: 16px;
-}
+        body {
+            /* background: #1D1F20; */
+            padding: 16px;
+            margin-top: 5rem;
+        }
 
-/* canvas {
+        /* canvas {
   border: 1px dotted red;
 } */
 
-.chart-container {
-  position: relative;
-  margin: auto;
-  height: 80vh;
-  width: 80vw;
-}
-
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 80vh;
+            width: 80vw;
+        }
     </style>
 </head>
+
 <body>
-        
-   <div  class="chart-container">
+
+    <div class="chart-container">
         <canvas id="myChart" width="150" height="60"></canvas>
         <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-       
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            responsive: true,
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                       
-                        'rgba(54, 162, 235, 0.2)',
-                       
-                    ],
-                    
-                    borderColor: [
-                       
-                        'rgba(54, 162, 235, 1)',
-                       
-                    ],
-                    borderWidth: 1,
-                    pointRadius: 3,
-                    pointHoverRadius: 7,
-                    pointHitRadius: 15,
-                    pointBorderWidth: 2,
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+            var ctx = document.getElementById('myChart').getContext('2d');
+
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                responsive: true,
+                offsetGridLines: true,
+                data: {
+                    labels: ['August 29', '', '', '', '', '', '', '', '', '', '', '', '', 'September27'],
+                    datasets: [{
+                        label: 'Cubic interpolation (monotone)',
+                        data: [0.9125, 0.91004, 0.9135, 0.908, 0.905, NaN, NaN, NaN, NaN,],
+                        pointRadius: 0,
+                        borderColor: '#4ecac3',
+                        backgroundColor: 'rgba(33,191,222,0.1)',
+
+                        cubicInterpolationMode: 'monotone'
+                    },
+                    {
+                        label: 'Cubic interpolation (default)',
+                        data: [NaN, NaN, NaN, NaN, 0.905, 0.900, 0.8755, 0.8768, 0.8743, 0.87540, 0.8755, 0.8768, 0.8901, 0.8905],
+                        pointRadius: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5],
+                        borderColor: '#33cf6e',
+                        pointBackgroundColor: '#33cf6e',
+                        backgroundColor: 'rgba(33,191,222,0.1)',
+
+                    },
+
+                    ]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        mode: 'index'
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true
+                            },
+                            gridLines: {
+                                display: false
+                            },
+                          
+                        }],
+                        yAxes: [{
+                            display: true,
+                            position: "right",
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Value'
+                            },
+                            gridLines: {
+                                drawBorder: false,
+                            },
+
+                            ticks: {
+                                min: 0.87,
+                                max: 0.92,
+                                stepSize: 0.89
+
+                            }
+                        }]
+                    }
                 }
-            }
-        });
-        
+
+            });
+
         </script>
-        </div>
+    </div>
 </body>
+
 </html>
